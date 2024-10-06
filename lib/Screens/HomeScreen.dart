@@ -1,9 +1,12 @@
 import 'package:facebookui/Widgets/CircleButton.dart';
+import 'package:facebookui/Widgets/Responsive.dart';
+import 'package:facebookui/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import '../Constants/Colors.dart';
 import '../Widgets/CreatePostContainer.dart';
 import '../Widgets/CreateRoomContainer.dart';
+import '../Widgets/PostsContainer.dart';
 import '../Widgets/StoriesContainer.dart';
 
 
@@ -20,14 +23,12 @@ class HomeScreen extends StatelessWidget {
           SliverAppBar(
             title: Text("facebook",style: AppStyle.AppBarNameStyle),
             centerTitle: false,
-            floating: true,
             backgroundColor: Colors.white,
             actions: [
               CircleButtton(icon: Icons.search, iconsize: 30, onPresseed: ()=>print("Search")),
               CircleButtton(icon: MdiIcons.facebookMessenger, iconsize: 30, onPresseed: ()=>print("Messanger")),
             ],
           ),
-
           /// CurrentUserContainer
           SliverToBoxAdapter(
               child: CreatePostContainer()),
@@ -40,6 +41,11 @@ class HomeScreen extends StatelessWidget {
           /// Stories Section
           SliverToBoxAdapter(
             child: StoriesContainer(),
+          ),
+
+          /// Posts Section
+          SliverToBoxAdapter(
+            child: PostsContainer(posts: posts,),
           )
         ],
       ),
